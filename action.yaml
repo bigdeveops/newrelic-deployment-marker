@@ -1,6 +1,9 @@
-name: 'New Relic Application Deployment'
+name: 'New Relic App Deployment Marker'
 author: 'Sander Blue'
-description: 'Perform New Relic operations in your CI/CD pipeline'
+description: 'Apply a New Relic application deployment marker to a specified application.'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
 inputs:
   api_key:
     description: 'Your New Relic Personal API Key.'
@@ -18,7 +21,6 @@ inputs:
   accountId:
     description: 'The New Relic application ID to apply the deployment marker.'
     required: false
-
 runs:
   using: 'docker'
   image: 'Dockerfile'
