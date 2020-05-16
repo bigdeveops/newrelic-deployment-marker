@@ -1,0 +1,18 @@
+on: [push]
+
+jobs:
+  new_relic:
+    runs-on: ubuntu-latest
+    name: New Relic Deployment Marker GitHub Action
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run main action step
+        uses: ./ # Uses an action in the root directory
+        with:
+          api_key: ${{ secrets.NEW_RELIC_API_KEY }}
+          applicationId: 516005664
+          revision: '${{ github.sha }}'
+          # command: "newrelic apm application search --accountId=${{ secrets.NEW_RELIC_ACCOUNT_ID }}"

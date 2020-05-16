@@ -1,0 +1,30 @@
+name: 'New Relic Application Deployment'
+author: 'Sander Blue'
+description: 'Perform New Relic operations in your CI/CD pipeline'
+inputs:
+  api_key:
+    description: 'Your New Relic Personal API Key.'
+    required: true
+  region:
+    description: 'The geographical region for your New Relic account - US or EU.'
+    required: false
+    default: US
+  applicationId:
+    description: 'The application ID to apply the deployment marker.'
+    required: true
+  revision:
+    description: 'Custom revision information to add to the deployment marker.'
+    required: false
+  accountId:
+    description: 'The New Relic application ID to apply the deployment marker.'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    NEW_RELIC_API_KEY: ${{ inputs.api_key }}
+    NEW_RELIC_REGION: ${{ inputs.region }}
+    APPLICATION_ID: ${{ inputs.applicationId }}
+    REVISION: ${{ inputs.revision }}
+    ACCOUNT_ID: ${{ inputs.accountId }}
