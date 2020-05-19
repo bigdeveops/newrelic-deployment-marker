@@ -5,11 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     name: New Relic Deployment Marker GitHub Action
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Create deployment marker
-        uses: sanderblue/newrelic-deployment-marker@v0.0.1
+        uses: ./
         with:
           api_key: ${{ secrets.NEW_RELIC_API_KEY }}
           accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
           region: US
           applicationId: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
           revision: 'newrelic-deployment-marker-action-${{ github.sha }}'
+          user: "sblue-testing-user"

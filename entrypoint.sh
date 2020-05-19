@@ -3,7 +3,11 @@
 RED='\033[0;31m'
 NO_COLOR='\033[0m'
 
-result=$(newrelic apm deployment create --applicationId "${APPLICATION_ID}" --revision "${REVISION}" 2>&1)
+echo ""
+echo "User: ${NEW_RELIC_USER}"
+echo ""
+
+result=$(newrelic apm deployment create --applicationId "${APPLICATION_ID}" --revision "${REVISION}" --user "${NEW_RELIC_USER}" 2>&1)
 
 exitStatus=$?
 

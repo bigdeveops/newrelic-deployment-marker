@@ -21,6 +21,10 @@ inputs:
   accountId:
     description: 'The New Relic application ID to apply the deployment marker.'
     required: false
+  user:
+    description: 'The user creating the deployment. Default: $GITHUB_ACTOR'
+    required: false
+    default: ${{ github.actor }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -30,3 +34,4 @@ runs:
     APPLICATION_ID: ${{ inputs.applicationId }}
     REVISION: ${{ inputs.revision }}
     ACCOUNT_ID: ${{ inputs.accountId }}
+    NEW_RELIC_USER: ${{ inputs.user }}
