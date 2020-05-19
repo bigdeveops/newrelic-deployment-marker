@@ -1,3 +1,12 @@
+
+---
+
+### :warning: This project has been archived! :warning:
+
+### Please use New Relic's official [Application Deployment Marker GitHub Action](https://github.com/marketplace/actions/new-relic-application-deployment-marker)
+
+---
+
 # New Relic Application Deployment Marker
 New Relic App Deployment Marker
 
