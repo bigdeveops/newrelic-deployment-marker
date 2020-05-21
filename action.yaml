@@ -24,7 +24,7 @@ inputs:
   user:
     description: 'The user creating the deployment. Default: $GITHUB_ACTOR'
     required: false
-    default: ${{ github.actor }}
+    default: '${{ github.actor }}'
 runs:
   using: 'docker'
   image: 'Dockerfile'
