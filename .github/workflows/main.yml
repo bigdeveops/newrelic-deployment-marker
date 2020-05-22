@@ -1,19 +1,51 @@
 on: [push]
 
 jobs:
-  new_relic:
+  newrelic:
     runs-on: ubuntu-latest
-    name: New Relic Deployment Marker GitHub Action
+    name: New Relic
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v2
+      - name: Set Release Version from Tag
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
 
-      - name: Create deployment marker
-        uses: newrelic/deployment-marker-action@feat/test-the-action
+      - name: Create New Relic deployment marker
+        uses: newrelic/deployment-marker-action@v1
         with:
           apiKey: ${{ secrets.NEW_RELIC_API_KEY }}
           accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-          region: US
           applicationId: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
-          revision: 'sblue-newrelic-deployment-marker-action-${{ github.sha }}'
-          user: '${{ github.actor }}'
+          revision: 'newrelic-deployment-marker-action-${{ github.sha }}'
+          user: '${{ github.user }}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# jobs:
+#   new_relic:
+#     runs-on: ubuntu-latest
+#     name: New Relic Deployment Marker GitHub Action
+#     steps:
+#       # - name: Checkout
+#       #   uses: actions/checkout@v2
+
+#       - name: Create deployment marker
+#         uses: newrelic/deployment-marker-action@feat/test-the-action
+#         with:
+#           apiKey: ${{ secrets.NEW_RELIC_API_KEY }}
+#           accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+#           region: US
+#           applicationId: ${{ secrets.NEW_RELIC_APPLICATION_ID }}
+#           revision: 'sblue-newrelic-deployment-marker-action-${{ github.sha }}'
+#           user: '${{ github.actor }}'
